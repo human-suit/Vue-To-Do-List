@@ -3,7 +3,8 @@
     <!-- {{ modelValue }} -->
     <ul>
       <li v-for="(item, index) in modelValue" :key="item.id">
-        {{ index + 1 }} - {{ item.text }} - State:
+        {{ index + 1 }} - <h3 v-if="item.complete" class="prov">{{ item.text }}</h3>
+        <h3 v-else>{{ item.text }}</h3> - State:
         {{ item.complete ? "True" : "False" }}
         <button @click="deletTask(item.id)">Delet</button>
         <button @click="readyTask(index)">Ready</button>
@@ -50,6 +51,12 @@ li {
   color: black;
   font-weight: 900;
 }
+.prov {
+  text-decoration: line-through;
+  font-size: 18px;
+  color: blueviolet;
+  margin-bottom: 10px;
+}  
 button {
   margin-left: 10px;
   padding: 10px 10px;
